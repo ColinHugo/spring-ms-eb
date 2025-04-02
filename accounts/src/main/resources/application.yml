@@ -27,3 +27,17 @@ spring:
 
   config:
     import: "optional:configserver:http://localhost:8071/"
+
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+
+# Exponer endpoints de actuator, se expone un endpoint que permite la actualización de properties en runtime
+# http://localhost:8080/actuator/refresh - POST
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

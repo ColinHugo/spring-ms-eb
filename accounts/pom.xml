@@ -83,6 +83,13 @@
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
 
+		<!-- Dependencia para cargar los config invocando sólo una vez el endpoint
+		 http://localhost:8080/actuator/busrefresh -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -131,7 +138,7 @@
 				<version>3.4.2</version>
 				<configuration>
 					<to>
-						<image>hcm/${project.artifactId}:s6</image>
+						<image>eazybytes/${project.artifactId}:s6</image>
 					</to>
 				</configuration>
 			</plugin>

@@ -1,0 +1,40 @@
+# Ignorar directorios de compilación y dependencias
+**/target/
+**/.mvn/
+**/.idea/
+**/.classpath
+**/.project
+**/.settings/
+**/*.iml
+
+# Ignorar archivos de logs
+**/logs/
+**/*.log
+
+# Ignorar archivos de configuración de entorno
+**/.env
+**/.DS_Store
+
+# Ignorar archivos específicos de IntelliJ IDEA y Eclipse
+**/.vscode/
+**/.metadata/
+**/.recommenders/
+**/.factorypath
+
+# Ignorar archivos de dependencia de Maven
+**/pom.xml.tag
+**/pom.xml.releaseBackup
+**/dependency-reduced-pom.xml
+**/release.properties
+
+# Ignorar archivos de cobertura de pruebas
+**/jacoco.exec
+**/jacoco/
+**/coverage/
+
+# Ignorar archivos de configuración de Docker (si aplica)
+**/docker-compose.override.yml
+
+# Ignorar archivos temporales del sistema
+**/*.swp
+**/*.swo

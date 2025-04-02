@@ -42,6 +42,20 @@
 			<artifactId>spring-cloud-config-server</artifactId>
 		</dependency>
 
+		<!-- Dependencia para cargar los config invocando sólo una vez el endpoint
+		 http://localhost:8080/actuator/busrefresh -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
+		</dependency>
+
+		<!-- Dependencia para cargar los config sin invocar un api
+		Expone un api /monitor, no es de actuator, es de spring clod config server http://localhost:8071/monitor -->
+		<!-- <dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-config-monitor</artifactId>
+		</dependency> -->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -64,10 +78,23 @@
 
 	<build>
 		<plugins>
-			<plugin>
+
+			<!-- <plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin> -->
+
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>3.4.2</version>
+				<configuration>
+					<to>
+						<image>eazybytes/${project.artifactId}:s6</image>
+					</to>
+				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 

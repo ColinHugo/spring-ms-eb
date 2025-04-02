@@ -4,7 +4,7 @@ server:
 spring:
 
   profiles:
-    active: "qa"
+    active: "prod"
 
   application:
     name: "loans"
@@ -26,4 +26,21 @@ spring:
     show-sql: true
 
   config:
-    import: "optional:configserver:http://localhost:8071/"
+    # local
+    # import: "optional:configserver:http://localhost:8071/"
+    # contenedores
+    import: "optional:configserver:http://configserver:8071/"
+
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+
+# Exponer endpoints de actuator, se expone un endpoint que permite la actualización de properties en runtime
+# http://localhost:8090/actuator/refresh - POST
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

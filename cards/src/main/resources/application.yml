@@ -28,14 +28,16 @@ spring:
   config:
     import: "optional:configserver:http://localhost:8071/"
 
-build:
-  version: "3.0"
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
 
-cards:
-  message: "Welcome to EazyBank cards related local APIs "
-  contactDetails:
-    name: "Dragos Lech - Developer"
-    email: "dragos@eazybank.com"
-  onCallSupport:
-    - (412) 419-3491
-    - (915) 382-1932
+# Exponer endpoints de actuator, se expone un endpoint que permite la actualización de properties en runtime
+# http://localhost:9000/actuator/refresh - POST
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

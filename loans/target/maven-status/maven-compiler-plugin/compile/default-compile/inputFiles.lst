@@ -1,8 +1,10 @@
 /home/hugocolin/udemy/ms-spring-eazy-bytes/services/loans/src/main/java/com/eazybytes/loans/LoansApplication.java
 /home/hugocolin/udemy/ms-spring-eazy-bytes/services/loans/src/main/java/com/eazybytes/loans/audit/AuditAwareImpl.java
+/home/hugocolin/udemy/ms-spring-eazy-bytes/services/loans/src/main/java/com/eazybytes/loans/config/LoansDocumentation.java
 /home/hugocolin/udemy/ms-spring-eazy-bytes/services/loans/src/main/java/com/eazybytes/loans/constants/LoansConstants.java
 /home/hugocolin/udemy/ms-spring-eazy-bytes/services/loans/src/main/java/com/eazybytes/loans/controller/LoansController.java
 /home/hugocolin/udemy/ms-spring-eazy-bytes/services/loans/src/main/java/com/eazybytes/loans/dto/ErrorResponseDto.java
+/home/hugocolin/udemy/ms-spring-eazy-bytes/services/loans/src/main/java/com/eazybytes/loans/dto/LoansContactInfoDto.java
 /home/hugocolin/udemy/ms-spring-eazy-bytes/services/loans/src/main/java/com/eazybytes/loans/dto/LoansDto.java
 /home/hugocolin/udemy/ms-spring-eazy-bytes/services/loans/src/main/java/com/eazybytes/loans/dto/ResponseDto.java
 /home/hugocolin/udemy/ms-spring-eazy-bytes/services/loans/src/main/java/com/eazybytes/loans/entity/BaseEntity.java
