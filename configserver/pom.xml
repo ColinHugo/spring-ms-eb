@@ -44,10 +44,10 @@
 
 		<!-- Dependencia para cargar los config invocando sólo una vez el endpoint
 		 http://localhost:8080/actuator/busrefresh -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
-		</dependency>
+		</dependency> -->
 
 		<!-- Dependencia para cargar los config sin invocar un api
 		Expone un api /monitor, no es de actuator, es de spring clod config server http://localhost:8071/monitor -->
@@ -90,7 +90,7 @@
 				<version>3.4.2</version>
 				<configuration>
 					<to>
-						<image>eazybytes/${project.artifactId}:s6</image>
+						<image>eazybytes/${project.artifactId}:s7</image>
 					</to>
 				</configuration>
 			</plugin>

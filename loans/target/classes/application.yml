@@ -10,32 +10,26 @@ spring:
     name: "loans"
 
   datasource:
-    url: jdbc:h2:mem:testdb
-    driverClassName: org.h2.Driver
-    username: sa
-    password: ''
-
-  h2:
-    console:
-      enabled: true
+    url: jdbc:mysql://localhost:3307/loansdb
+    username: root
+    password: root
 
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    hibernate:
-      ddl-auto: update
     show-sql: true
 
-  config:
-    # local
-    # import: "optional:configserver:http://localhost:8071/"
-    # contenedores
-    import: "optional:configserver:http://configserver:8071/"
+  # Ejecuta los queries que estén en resources/schema.sql siempre y cuando no sea H2, con H2 es automático
+  sql:
+    init:
+      mode: always
 
-  rabbitmq:
-    host: "localhost"
-    port: 5672
-    username: "guest"
-    password: "guest"
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+
+#  rabbitmq:
+#    host: "localhost"
+#    port: 5672
+#    username: "guest"
+#    password: "guest"
 
 # Exponer endpoints de actuator, se expone un endpoint que permite la actualización de properties en runtime
 # http://localhost:8090/actuator/refresh - POST

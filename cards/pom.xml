@@ -49,9 +49,15 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- <dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency> -->
+
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
 
@@ -79,10 +85,10 @@
 
         <!-- Dependencia para cargar los config invocando sólo una vez el endpoint
 		 http://localhost:8080/actuator/busrefresh -->
-        <dependency>
+        <!-- <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bus-amqp</artifactId>
-        </dependency>
+        </dependency> -->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -132,7 +138,7 @@
                 <version>3.4.2</version>
                 <configuration>
                     <to>
-                        <image>eazybytes/${project.artifactId}:s6</image>
+                        <image>eazybytes/${project.artifactId}:s7</image>
                     </to>
                 </configuration>
             </plugin>

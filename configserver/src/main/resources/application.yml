@@ -25,11 +25,11 @@ spring:
           clone-on-start: true
           force-pull: true
 
-  rabbitmq:
-    host: "localhost"
-    port: 5672
-    username: "guest"
-    password: "guest"
+#  rabbitmq:
+#    host: "localhost"
+#    port: 5672
+#    username: "guest"
+#    password: "guest"
 
 # Cuando el repo lanza el webhook al API monitor, config server usará spring cloud bus, el webhook se lanza a la url
 # http://localhost:8071/monitor
