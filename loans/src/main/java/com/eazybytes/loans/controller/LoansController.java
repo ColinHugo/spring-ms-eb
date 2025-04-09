@@ -16,6 +16,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -29,6 +30,7 @@ import org.springframework.web.bind.annotation.*;
         name = "CRUD REST APIs for Loans in EazyBank",
         description = "CRUD REST APIs in EazyBank to CREATE, UPDATE, FETCH AND DELETE loan details"
 )
+@Slf4j
 @Validated
 @RequiredArgsConstructor
 @RequestMapping( path = "/api", produces = { MediaType.APPLICATION_JSON_VALUE } )
@@ -91,7 +93,10 @@ public class LoansController {
     )
     @GetMapping( "/fetch" )
     public ResponseEntity< LoansDto > fetchLoanDetails(
+            @RequestHeader( "eazybank-correlation-id" ) String correlationId,
             @RequestParam @Pattern( regexp = "(^$|[0-9]{10})", message = "Mobile number must be 10 digits") String mobileNumber ) {
+
+        log.debug( "eazyBank-correlation-id found:" + correlationId );
 
         LoansDto loansDto = iLoansService.fetchLoan( mobileNumber );
 

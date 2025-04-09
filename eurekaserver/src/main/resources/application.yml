@@ -21,3 +21,9 @@ management:
 
 # http://localhost:8070/eureka/apps
 # http://localhost:8070/eureka/apps/nombreServicio
+
+logging:
+  level:
+    com:
+      eazybytes:
+        eurekaserver: DEBUG

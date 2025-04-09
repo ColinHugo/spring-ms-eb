@@ -2,13 +2,10 @@ server:
   port: 8080
 
 spring:
-
   profiles:
     active: "prod"
-
   application:
     name: accounts
-
   datasource:
     # url: jdbc:mysql://localhost:3306/accountsdb
     # username: root
@@ -20,7 +17,6 @@ spring:
   h2:
     console:
       enabled: true
-
   jpa:
     show-sql: true
 
@@ -47,9 +43,17 @@ management:
         include: "*"
   # management.endpoint.shutdown.enabled=true está deprecado
   # http://localhost:8080/actuator/shutdown (POST) Apaga el servicio
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
   endpoint:
     shutdown:
       access: unrestricted
+    health:
+      probes:
+        enabled: true
   info:
     env:
       enabled: true
@@ -74,3 +78,9 @@ info:
     name: "accounts"
     description: "Eazy Bank Accounts Application"
     version: "1.0.0"
+
+logging:
+  level:
+    com:
+      eazybytes:
+        accounts: DEBUG

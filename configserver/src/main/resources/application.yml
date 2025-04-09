@@ -2,15 +2,12 @@ server:
   port: 8071
 
 spring:
-
   application:
     name: "configserver"
-
   profiles:
     # sólo se usa native para que se busque en el file system o classpath
     # active: native
     active: git
-
   cloud:
     config:
       server:
@@ -33,7 +30,7 @@ spring:
 
 # Cuando el repo lanza el webhook al API monitor, config server usará spring cloud bus, el webhook se lanza a la url
 # http://localhost:8071/monitor
-# management:
+management:
 #  endpoints:
 #    web:
 #      exposure:
@@ -53,3 +50,9 @@ spring:
 # http://localhost:8071/encrypt - http://localhost:8071/decrypt
 encrypt:
   key: "45D81EC1EF61DF9AD8D3E5BB397F9"
+
+logging:
+  level:
+    com:
+      eazybytes:
+        configserver: DEBUG

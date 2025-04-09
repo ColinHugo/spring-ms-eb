@@ -1,0 +1,52 @@
+# http://localhost:8072/actuator/gateway/routes
+
+server:
+  port: 8072
+
+spring:
+  application:
+    name: "gatewayserver"
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lowerCaseServiceId: true
+
+# Exponer endpoints de actuator, se expone un endpoint que permite la actualización de properties en runtime
+# http://localhost:8090/actuator/refresh - POST
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      access: unrestricted
+  info:
+    env:
+      enabled: true
+
+# http://localhost:8072/actuator/info
+info:
+  app:
+    name: "gatewayserver"
+    description: "Eazy Bank Gateway Server Application"
+    version: "1.0.0"
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: "http://localhost:8070/eureka/"
+
+logging:
+  level:
+    com:
+      eazybytes:
+        gatewayserver: DEBUG

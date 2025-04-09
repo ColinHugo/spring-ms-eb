@@ -2,13 +2,10 @@ server:
   port: 9000
 
 spring:
-
   profiles:
     active: "prod"
-
   application:
     name: "cards"
-
   datasource:
     # url: jdbc:mysql://localhost:3308/cardsdb
     # username: root
@@ -20,7 +17,6 @@ spring:
   h2:
     console:
       enabled: true
-
   jpa:
     show-sql: true
 
@@ -47,9 +43,17 @@ management:
         include: "*"
     # management.endpoint.shutdown.enabled=true está deprecado
     # http://localhost:9000/actuator/shutdown (POST) Apaga el servicio
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
   endpoint:
     shutdown:
       access: unrestricted
+    health:
+      probes:
+        enabled: true
   info:
     env:
       enabled: true
@@ -74,3 +78,9 @@ info:
     name: "cards"
     description: "Eazy Bank Cards Application"
     version: "1.0.0"
+
+logging:
+  level:
+    com:
+      eazybytes:
+        cards: DEBUG
