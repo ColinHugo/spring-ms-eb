@@ -14,6 +14,16 @@ spring:
         locator:
           enabled: false
           lowerCaseServiceId: true
+      # tiempo de espera para respuestas, como está en el Gateway Server, será global para todos los servicios
+      httpclient:
+        connect-timeout: 1000
+        response-timeout: 2s
+  data:
+    redis:
+      connect-timeout: 2s
+      host: localhost
+      port: 6379
+      timeout: 1s
 
 # Exponer endpoints de actuator, se expone un endpoint que permite la actualización de properties en runtime
 # http://localhost:8090/actuator/refresh - POST
@@ -50,3 +60,12 @@ logging:
     com:
       eazybytes:
         gatewayserver: DEBUG
+
+# Configuraciones para pasar de open - close - half_open
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 2
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000

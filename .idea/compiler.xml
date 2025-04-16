@@ -10,7 +10,7 @@
         <module name="eurekaserver" />
         <module name="configserver" />
       </profile>
-      <profile name="Annotation profile for gatewayserver" enabled="true">
+      <profile name="Annotation profile for loans" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />

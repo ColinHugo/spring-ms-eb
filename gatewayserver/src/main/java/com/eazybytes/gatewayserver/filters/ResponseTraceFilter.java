@@ -19,18 +19,16 @@ public class ResponseTraceFilter {
     public GlobalFilter postGlobalFilter() {
 
         return ( exchange, chain ) -> {
+            return chain.filter( exchange ).then( Mono.fromRunnable( () -> {
+                HttpHeaders requestHeaders = exchange.getRequest().getHeaders();
+                String correlationId = filterUtility.getCorrelationId( requestHeaders );
 
-            return chain
-                    .filter( exchange )
-                    .then( Mono.fromRunnable( () -> {
+                if( !( exchange.getResponse().getHeaders().containsKey( FilterUtility.CORRELATION_ID ) ) ) {
+                    log.debug( "Updated the correlation id to the outbound headers: {}", correlationId );
+                    exchange.getResponse().getHeaders().add( FilterUtility.CORRELATION_ID, correlationId );
+                }
 
-                        HttpHeaders requestHeaders = exchange.getRequest().getHeaders();
-                        String correlationId = filterUtility.getCorrelationId( requestHeaders );
-
-                        log.debug( "Updated the correlation id to the outbound headers: {}", correlationId );
-
-                        exchange.getResponse().getHeaders().add( FilterUtility.CORRELATION_ID, correlationId );
-                    } ) );
+            } ) );
         };
     }
 }

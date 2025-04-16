@@ -26,6 +26,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 @Tag(
         name = "CRUD REST APIs for Loans in EazyBank",
         description = "CRUD REST APIs in EazyBank to CREATE, UPDATE, FETCH AND DELETE loan details"
@@ -248,8 +250,9 @@ public class LoansController {
             )
     }
     )
-    @GetMapping("/contact-info")
-    public ResponseEntity<LoansContactInfoDto> getContactInfo() {
+    @GetMapping( "/contact-info" )
+    public ResponseEntity< LoansContactInfoDto > getContactInfo() {
+        log.info( "Invoked Loans Contact Info API: " + LocalDateTime.now() );
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(loansContactInfoDto);
