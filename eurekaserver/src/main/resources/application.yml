@@ -18,6 +18,9 @@ management:
     health:
       probes:
         enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
 
 # http://localhost:8070/eureka/apps
 # http://localhost:8070/eureka/apps/nombreServicio
@@ -27,3 +30,5 @@ logging:
     com:
       eazybytes:
         eurekaserver: DEBUG
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"

@@ -45,6 +45,9 @@ management:
     health:
       probes:
         enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
 
 # al poner este valor, se expondrán 2 endpoints para encriptar y desencriptar
 # http://localhost:8071/encrypt - http://localhost:8071/decrypt
@@ -56,3 +59,5 @@ logging:
     com:
       eazybytes:
         configserver: DEBUG
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"

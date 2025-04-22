@@ -17,7 +17,7 @@ spring:
       # tiempo de espera para respuestas, como está en el Gateway Server, será global para todos los servicios
       httpclient:
         connect-timeout: 1000
-        response-timeout: 2s
+        response-timeout: 10s
   data:
     redis:
       connect-timeout: 2s
@@ -38,6 +38,9 @@ management:
   info:
     env:
       enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
 
 # http://localhost:8072/actuator/info
 info:
@@ -60,6 +63,8 @@ logging:
     com:
       eazybytes:
         gatewayserver: DEBUG
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
 
 # Configuraciones para pasar de open - close - half_open
 resilience4j.circuitbreaker:
